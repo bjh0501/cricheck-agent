@@ -1,15 +1,9 @@
-from telnetlib import EC
 
-from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 import time
 import json
 
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.wait import WebDriverWait
-
 from src.config.Logging import Log
-from src.config.util import GLOBAL_NAVER_COOKIE
 from src.domain.types.LoopSearchDTO import LOOP_SEARCH_RESULT_MESSAGE
 
 from selenium.webdriver.chrome.options import Options
@@ -47,12 +41,14 @@ class ShoppingService:
         chrome_options.add_argument('--disable-dev-shm-usage')
 
         Log.i("일반 크롬 생성")
-        driver = webdriver.Chrome(executable_path="./chromedriver", options=chrome_options)
-
         # 웹드라이버 감지 방지 스크립트
-        driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+        # driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
 
         # 네이버 접속
+        from selenium.webdriver.chrome.service import Service
+        service = Service(executable_path="./chromedriver")
+        driver = webdriver.Chrome(executable_path="./chromedriver", options=chrome_options)
+
         driver.get("https://www.naver.com")
         time.sleep(2)
 

@@ -1,5 +1,6 @@
 import logging
 
+
 global_login_token = ""
 
 def setToken(token):

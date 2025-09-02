@@ -2,9 +2,9 @@ import time
 import traceback
 
 from src.config.Logging import Log
-from src.place.placeController import getSinglePlace, getPlace
+# from src.place.placeController import getSinglePlace, getPlace
 from src.shopping.shoppingController import getqueue
-from src.shoppingcompare.shoppingCompareController import getCompareQueue
+# from src.shoppingcompare.shoppingzompareController import getCompareQueue
 
 
 def run_getqueue_periodically():
